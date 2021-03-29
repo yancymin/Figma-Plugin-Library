@@ -39,33 +39,75 @@ function compare(p) {
 
 const App = () => {
   const [plugins, setPlugins] = useState([]);
+  const [icon, setIcon] = useState([]);
+  const [illustration, setIllustration] = useState([]);
+  const [mobile, setMobile] = useState([]);
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
 
   useEffect(() => {
     let allData = [];
-    console.log("1");
+    let allIcon = [];
+    let allIllustration = [];
+    let allMobile = [];
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         allData = [...data.plugins];
         allData.sort(compare(sort));
         setPlugins(allData);
+
+        allData.map((t) => {
+          if (t.name.includes("icon") || t.description.includes("icon")) {
+            allIcon.push(t);
+          }
+        });
+        setIcon(allIcon);
+
+        allData.map((t) => {
+          if (
+            t.name.includes("llustration") ||
+            t.description.includes("llustration")
+          ) {
+            allIllustration.push(t);
+          }
+        });
+        setIllustration(allIllustration);
+
+        allData.map((t) => {
+          if (
+            t.name.includes("mobile") ||
+            t.description.includes("mobile") ||
+            t.name.includes("ios") ||
+            t.description.includes("android")||
+            t.name.includes("phone") ||
+            t.description.includes("phone")
+          ) {
+            allMobile.push(t);
+          }
+        });
+        setMobile(allMobile);
       });
   }, []);
 
   const Header = () => {
     const likeSortHandle = () => {
       setSort("likeCount");
-      console.log("likeCount");
     };
     const downSortHandle = () => {
       setSort("installCount");
-      console.log("installCount");
     };
     const thumbnailToggle = () => {
       setThumbnail(!thumbnail);
-      console.log("thumbnailToggle");
+    };
+    const iconSortHandle = () => {
+      setPlugins(icon);
+    };
+    const illustrationSortHandle = () => {
+      setPlugins(illustration);
+    };
+    const mobileSortHandle = () => {
+      setPlugins(mobile);
     };
     return (
       <HeaderStyle>
@@ -75,6 +117,9 @@ const App = () => {
           <li onClick={downSortHandle}>安装量</li>
           <li onClick={likeSortHandle}>点赞数</li>
           <li onClick={thumbnailToggle}>封面</li>
+          <li onClick={iconSortHandle}>icon</li>
+          <li onClick={illustrationSortHandle}>illustration</li>
+          <li onClick={mobileSortHandle}>mobile</li>
         </ul>
       </HeaderStyle>
     );
