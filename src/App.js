@@ -42,6 +42,7 @@ const App = () => {
   const [icon, setIcon] = useState([]);
   const [illustration, setIllustration] = useState([]);
   const [mobile, setMobile] = useState([]);
+  const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
 
@@ -79,7 +80,7 @@ const App = () => {
             t.name.includes("mobile") ||
             t.description.includes("mobile") ||
             t.name.includes("ios") ||
-            t.description.includes("android")||
+            t.description.includes("android") ||
             t.name.includes("phone") ||
             t.description.includes("phone")
           ) {
@@ -89,6 +90,11 @@ const App = () => {
         setMobile(allMobile);
       });
   }, []);
+
+  const inputValueHandle = () => {
+    setInputValue(e.target.value);
+    let data = []
+  };
 
   const Header = () => {
     const likeSortHandle = () => {
@@ -162,6 +168,11 @@ const App = () => {
     <AppStyle className={"App"}>
       <GlobalStyles />
       <Header />
+      <input
+        onChange={(e) => {
+          inputValueHandle(e);
+        }}
+      />
       <main className={thumbnail ? `thumbnailView` : null}>{pluginList}</main>
     </AppStyle>
   );
