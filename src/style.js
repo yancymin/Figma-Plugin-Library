@@ -24,6 +24,7 @@ export const AppStyle = styled.div`
     }
   }
   main {
+    margin-top: 28px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -69,6 +70,10 @@ export const AppStyle = styled.div`
       border-radius: 8px;
       width: 40px;
       height: 40px;
+    }
+
+    .cover {
+      width: 100%;
     }
   }
 `;
