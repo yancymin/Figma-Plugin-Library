@@ -78,6 +78,7 @@ function compare(p) {
 }
 
 const App = () => {
+  const [tagActive, setTagActive] = useState("全部");
   const [allPlugins, setAllPlugins] = useState([]);
   const [plugins, setPlugins] = useState([]);
   const [icon, setIcon] = useState([]);
@@ -232,8 +233,8 @@ const App = () => {
             j.tags.forEach((s) => {
               collectTags(t, j.all, s);
             });
-            console.log(j.all);
             j.set(j.all);
+            // console.log(j.all);
             // if (j.name === "icon") {
             //   setIcon(j.all);
             // }
@@ -252,8 +253,10 @@ const App = () => {
     const thumbnailToggle = () => {
       setThumbnail(!thumbnail);
     };
-    const tagSortHandle = (tag) => {
+    const tagSortHandle = (tag, name) => {
       setPlugins(tag);
+      setTagActive(name);
+      console.log(name);
     };
 
     return (
@@ -265,7 +268,10 @@ const App = () => {
           <li onClick={thumbnailToggle}>封面</li>
           {tagData.map((t) => {
             return (
-              <li onClick={() => tagSortHandle(t.plugins)}>
+              <li
+                onClick={(e) => tagSortHandle(t.plugins, e.target.innerText)}
+                className={tagActive.includes(t.name) ? "tagActive" : null}
+              >
                 {`${t.name} ${t.plugins.length}`}
               </li>
             );
