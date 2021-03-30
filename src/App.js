@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import { AppStyle } from "../src/style.js";
-// import Header from "../src/components/Header";
+import Header from "../src/components/Header";
 import reset from "react-style-reset/string";
 import { createGlobalStyle } from "styled-components";
 import logo from "../src/assets/logo.svg";
@@ -78,55 +78,167 @@ function compare(p) {
 }
 
 const App = () => {
+  const [allPlugins, setAllPlugins] = useState([]);
   const [plugins, setPlugins] = useState([]);
   const [icon, setIcon] = useState([]);
   const [illustration, setIllustration] = useState([]);
   const [mobile, setMobile] = useState([]);
+  const [color, setColor] = useState([]);
+  const [text, setText] = useState([]);
+  const [mock, setMock] = useState([]);
+  const [chart, setChart] = useState([]);
+  const [chinese, setChinese] = useState([]);
+  const [component, setComponent] = useState([]);
+  const [image, setImage] = useState([]);
+  const [code, setCode] = useState([]);
+  const [layout, setLayout] = useState([]);
+  const [threeD, setThreeD] = useState([]);
+  const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
 
+  let tagData = [
+    {
+      name: "全部",
+      plugins: allPlugins,
+      tags: [],
+      all: [],
+      set: () => {},
+    },
+    {
+      name: "图标",
+      plugins: icon,
+      tags: ["icon"],
+      all: [],
+      set: setIcon,
+    },
+    {
+      name: "插画",
+      plugins: illustration,
+      tags: ["llustration"],
+      all: [],
+      set: setIllustration,
+    },
+    {
+      name: "移动端",
+      plugins: mobile,
+      tags: ["mobile", "ios", "android", "phone"],
+      all: [],
+      set: setMobile,
+    },
+    {
+      name: "颜色",
+      plugins: color,
+      tags: ["color", "palette", "Gradient"],
+      all: [],
+      set: setColor,
+    },
+    {
+      name: "文字",
+      plugins: text,
+      tags: ["text", "typography", "font"],
+      all: [],
+      set: setText,
+    },
+    {
+      name: "样机",
+      plugins: mock,
+      tags: ["mockup"],
+      all: [],
+      set: setMock,
+    },
+    {
+      name: "图表",
+      plugins: chart,
+      tags: ["chart", "Visualization"],
+      all: [],
+      set: setChart,
+    },
+    {
+      name: "中文",
+      plugins: chinese,
+      tags: ["Chinese", "China", "chinese", "china"],
+      all: [],
+      set: setChinese,
+    },
+    {
+      name: "组件",
+      plugins: component,
+      tags: ["component", "Component", "master", "datech"],
+      all: [],
+      set: setComponent,
+    },
+    {
+      name: "图像",
+      plugins: image,
+      tags: ["image", "Image", "pic"],
+      all: [],
+      set: setImage,
+    },
+    {
+      name: "代码",
+      plugins: code,
+      tags: [
+        "code",
+        "Code",
+        "react",
+        "vue",
+        "css",
+        "js",
+        "html",
+        "HTML",
+        "javascript",
+      ],
+      all: [],
+      set: setCode,
+    },
+    {
+      name: "布局",
+      plugins: layout,
+      tags: ["ayout", "grid"],
+      all: [],
+      set: setLayout,
+    },
+    {
+      name: "3D",
+      plugins: threeD,
+      tags: ["3d", "3D"],
+      all: [],
+      set: setThreeD,
+    },
+  ];
+
   useEffect(() => {
     let allData = [];
-    let allIcon = [];
-    let allIllustration = [];
-    let allMobile = [];
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         allData = [...data.plugins];
         allData.sort(compare(sort));
         setPlugins(allData);
+        setAllPlugins(allData);
+
+        const collectTags = (t, allArray, s) => {
+          if (!allArray.includes(t)) {
+            if (t.name.includes(s) || t.description.includes(s)) {
+              allArray.push(t);
+            }
+          }
+        };
 
         allData.map((t) => {
-          if (t.name.includes("icon") || t.description.includes("icon")) {
-            allIcon.push(t);
-          }
+          tagData.map((j) => {
+            j.tags.forEach((s) => {
+              collectTags(t, j.all, s);
+            });
+            console.log(j.all);
+            j.set(j.all);
+            // if (j.name === "icon") {
+            //   setIcon(j.all);
+            // }
+          });
         });
-        setIcon(allIcon);
-
-        allData.map((t) => {
-          if (
-            t.name.includes("llustration") ||
-            t.description.includes("llustration")
-          ) {
-            allIllustration.push(t);
-          }
-        });
-        setIllustration(allIllustration);
-
-        allData.map((t) => {
-          if (
-            t.name.includes("mobile") ||
-            t.description.includes("mobile") ||
-            t.name.includes("ios") ||
-            t.description.includes("android") ||
-            t.name.includes("phone") ||
-            t.description.includes("phone")
-          ) {
-            allMobile.push(t);
-          }
-        });
-        setMobile(allMobile);
       });
   }, []);
 
@@ -140,34 +252,24 @@ const App = () => {
     const thumbnailToggle = () => {
       setThumbnail(!thumbnail);
     };
-    const iconSortHandle = () => {
-      setPlugins(icon);
+    const tagSortHandle = (tag) => {
+      setPlugins(tag);
     };
-    const illustrationSortHandle = () => {
-      setPlugins(illustration);
-    };
-    const mobileSortHandle = () => {
-      setPlugins(mobile);
-    };
+
     return (
       <HeaderStyle>
-        {/* <img src={logo} alt="logo" /> */}
+        <img src={logo} alt="logo" />
         <ul>
-          {/* <li onClick={timeSortHandle}>新旧</li> */}
           <li onClick={downSortHandle}>安装量</li>
           <li onClick={likeSortHandle}>点赞数</li>
           <li onClick={thumbnailToggle}>封面</li>
-          <li onClick={iconSortHandle}>图标</li>
-          <li onClick={illustrationSortHandle}>插画</li>
-          <li onClick={mobileSortHandle}>移动端</li>
-          <li onClick={mobileSortHandle}>颜色</li>
-          <li onClick={mobileSortHandle}>文字</li>
-          <li onClick={mobileSortHandle}>样机</li>
-          <li onClick={mobileSortHandle}>组件</li>
-          <li onClick={mobileSortHandle}>图像</li>
-          <li onClick={mobileSortHandle}>代码</li>
-          <li onClick={mobileSortHandle}>布局</li>
-          <li onClick={mobileSortHandle}>中文</li>
+          {tagData.map((t) => {
+            return (
+              <li onClick={() => tagSortHandle(t.plugins)}>
+                {`${t.name} ${t.plugins.length}`}
+              </li>
+            );
+          })}
         </ul>
       </HeaderStyle>
     );
@@ -198,7 +300,37 @@ const App = () => {
             />
             <h3>{i.name} </h3>
           </div>
-          <p>{subString(i.description.replace(/(<p>)/gi, "").replace(/(<\/p>)/gi, "").replace(/(<strong>)/gi, "").replace(/(<\/strong>)/gi, "").replace(/(<br>)/gi, "").replace(/(<\/br>)/gi, "").replace(/(<h2>)/gi, ""), 100)}...</p>
+          <p>
+            {subString(
+              i.description
+                .replace(/(<p>)/gi, "")
+                .replace(/(<\/p>)/gi, "")
+                .replace(/(<strong>)/gi, "")
+                .replace(/(<\/strong>)/gi, "")
+                .replace(/(<br>)/gi, "")
+                .replace(/(<\/br>)/gi, "")
+                .replace(/(<h2>)/gi, "")
+                .replace(/(<\/h2>)/gi, "")
+                .replace(/(<h1>)/gi, "")
+                .replace(/(<\/h1>)/gi, "")
+                .replace(/(<h3>)/gi, "")
+                .replace(/(<\/h3>)/gi, "")
+                .replace(/(<h4>)/gi, "")
+                .replace(/(<\/h4>)/gi, "")
+                .replace(/(<h5>)/gi, "")
+                .replace(/(<\/h5>)/gi, "")
+                .replace(/(<h6>)/gi, "")
+                .replace(/(<\/h6>)/gi, "")
+                .replace(/(<li>)/gi, "")
+                .replace(/(<a>)/gi, "")
+                .replace(/(<\/a>)/gi, "")
+                .replace(/(<span>)/gi, "")
+                .replace(/(<\/span>)/gi, "")
+                .replace(/(<\/li>)/gi, ""),
+              100
+            )}
+            ...
+          </p>
           <span>{i.publisherName}</span>
           <span>{i.likeCount}</span>
           <span>Install Count: {i.installCount}</span>
@@ -211,6 +343,11 @@ const App = () => {
     <AppStyle className={"App"}>
       <GlobalStyles />
       <Header />
+      {/* <input
+        onChange={(e) => {
+          inputValueHandle(e);
+        }}
+      /> */}
       <main className={thumbnail ? `thumbnailView` : null}>{pluginList}</main>
     </AppStyle>
   );
