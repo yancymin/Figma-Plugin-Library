@@ -4,6 +4,10 @@ export const AppStyle = styled.div`
   .tagActive {
     background: #333;
     color: white;
+
+    &:hover {
+      color: white;
+    }
   }
   .thumbnailView {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
