@@ -98,6 +98,7 @@ const App = () => {
   const [animation, setAnimation] = useState([]);
   const [cool, setCool] = useState([]);
   const [prototype, setPrototype] = useState([]);
+  const [handoff, setHandoff] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
@@ -242,9 +243,16 @@ const App = () => {
     {
       name: "原型",
       plugins: prototype,
-      tags: ["prototype", "ireframe", "arrow", "Slide", "slide", "Principle"],
+      tags: ["prototype", "ireframe", "arrow", "Slide", "slide", "Principle", "Framer"],
       all: [],
       set: setPrototype,
+    },
+    {
+      name: "交付",
+      plugins: handoff,
+      tags: ["hand-off", "handoff", "Hand-off", "Handoff", ],
+      all: [],
+      set: setHandoff
     },
   ];
 
