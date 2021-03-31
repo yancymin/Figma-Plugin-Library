@@ -99,6 +99,7 @@ const App = () => {
   const [cool, setCool] = useState([]);
   const [prototype, setPrototype] = useState([]);
   const [handoff, setHandoff] = useState([]);
+  const [svg, setSvg] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
@@ -142,7 +143,7 @@ const App = () => {
     {
       name: "文字",
       plugins: text,
-      tags: ["text", "typography", "font"],
+      tags: ["text", "typography", "font", "title", "Title"],
       all: [],
       set: setText,
     },
@@ -243,16 +244,31 @@ const App = () => {
     {
       name: "原型",
       plugins: prototype,
-      tags: ["prototype", "ireframe", "arrow", "Slide", "slide", "Principle", "Framer"],
+      tags: [
+        "prototype",
+        "ireframe",
+        "arrow",
+        "Slide",
+        "slide",
+        "Principle",
+        "Framer",
+      ],
       all: [],
       set: setPrototype,
     },
     {
       name: "交付",
       plugins: handoff,
-      tags: ["hand-off", "handoff", "Hand-off", "Handoff", ],
+      tags: ["hand-off", "handoff", "Hand-off", "Handoff"],
       all: [],
-      set: setHandoff
+      set: setHandoff,
+    },
+    {
+      name: "SVG",
+      plugins: svg,
+      tags: ["svg", "SVG"],
+      all: [],
+      set: setSvg,
     },
   ];
 
