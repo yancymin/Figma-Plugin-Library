@@ -20,6 +20,7 @@ export const HeaderStyle = styled.nav`
     max-width: 60vw;
     flex-wrap: wrap;
     justify-content: center;
+    /* border-top: 1px solid #eee; */
 
     li {
       cursor: pointer;

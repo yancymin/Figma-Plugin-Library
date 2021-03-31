@@ -21,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
     top: 10px;
 
     select {
-      background: #333;
-      color: rgb(245 245 247 / 80%);
+      /* background: #333; */
+      /* color: rgb(245 245 247 / 80%); */
       width: 100px;
       border-radius: 3px;
       padding: 2px 0;
@@ -94,6 +94,10 @@ const App = () => {
   const [code, setCode] = useState([]);
   const [layout, setLayout] = useState([]);
   const [threeD, setThreeD] = useState([]);
+  const [dSystem, setDSystem] = useState([]);
+  const [animation, setAnimation] = useState([]);
+  const [cool, setCool] = useState([]);
+  const [prototype, setPrototype] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(false);
@@ -104,7 +108,7 @@ const App = () => {
       plugins: allPlugins,
       tags: [],
       all: [],
-      set: () => { },
+      set: () => {},
     },
     {
       name: "图标",
@@ -158,7 +162,7 @@ const App = () => {
     {
       name: "中文",
       plugins: chinese,
-      tags: ["Chinese", "China", "chinese", "china"],
+      tags: ["Chinese", "China", "chinese", "china", "中", "是", "的"],
       all: [],
       set: setChinese,
     },
@@ -172,7 +176,7 @@ const App = () => {
     {
       name: "图像",
       plugins: image,
-      tags: ["image", "Image", "pic"],
+      tags: ["image", "Image", "pic", "Pixel"],
       all: [],
       set: setImage,
     },
@@ -207,6 +211,41 @@ const App = () => {
       all: [],
       set: setThreeD,
     },
+    {
+      name: "设计系统",
+      plugins: dSystem,
+      tags: [
+        "design system",
+        "Design System",
+        "Design system",
+        "token",
+        "Token",
+        "Material",
+      ],
+      all: [],
+      set: setDSystem,
+    },
+    {
+      name: "动画",
+      plugins: animation,
+      tags: ["animation", "Animation", "gif", "animate"],
+      all: [],
+      set: setAnimation,
+    },
+    {
+      name: "Figma.Cool",
+      plugins: cool,
+      tags: ["Figma.Cool"],
+      all: [],
+      set: setCool,
+    },
+    {
+      name: "原型",
+      plugins: prototype,
+      tags: ["prototype", "ireframe", "arrow", "Slide", "slide", "Principle"],
+      all: [],
+      set: setPrototype,
+    },
   ];
 
   useEffect(() => {
@@ -219,29 +258,20 @@ const App = () => {
         allData.sort(compare(sort));
         setPlugins(allData);
         setAllPlugins(allData);
-
-        // allData.map((t) => {
-        //   tagData.map((j) => {
-        //     j.tags.forEach((s) => {
-        //       collectTags(t, j.all, s);
-        //     });
-        //     j.set(j.all);
-        //     // console.log(j.all);
-        //     // if (j.name === "icon") {
-        //     //   setIcon(j.all);
-        //     // }
-        //   });
-        // });
       });
   }, []);
 
   const collectTags = useCallback((t, allArray, s) => {
     if (!allArray.includes(t)) {
-      if (t.name.includes(s) || t.description.includes(s)) {
+      if (
+        t.name.includes(s) ||
+        t.description.includes(s) ||
+        t.publisherName.includes(s)
+      ) {
         allArray.push(t);
       }
     }
-  })
+  });
 
   useEffect(() => {
     allPlugins.map((t) => {
@@ -250,13 +280,9 @@ const App = () => {
           collectTags(t, j.all, s);
         });
         j.set(j.all);
-        // console.log(j.all);
-        // if (j.name === "icon") {
-        //   setIcon(j.all);
-        // }
       });
     });
-  }, [allPlugins])
+  }, [allPlugins]);
 
   const Header = () => {
     const likeSortHandle = () => {
