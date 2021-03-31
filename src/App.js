@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from "react";
+import { Component, useCallback, useEffect, useState } from "react";
 import { AppStyle } from "../src/style.js";
 import Header from "../src/components/Header";
 import reset from "react-style-reset/string";
@@ -104,7 +104,7 @@ const App = () => {
       plugins: allPlugins,
       tags: [],
       all: [],
-      set: () => {},
+      set: () => { },
     },
     {
       name: "图标",
@@ -220,28 +220,43 @@ const App = () => {
         setPlugins(allData);
         setAllPlugins(allData);
 
-        const collectTags = (t, allArray, s) => {
-          if (!allArray.includes(t)) {
-            if (t.name.includes(s) || t.description.includes(s)) {
-              allArray.push(t);
-            }
-          }
-        };
-
-        allData.map((t) => {
-          tagData.map((j) => {
-            j.tags.forEach((s) => {
-              collectTags(t, j.all, s);
-            });
-            j.set(j.all);
-            // console.log(j.all);
-            // if (j.name === "icon") {
-            //   setIcon(j.all);
-            // }
-          });
-        });
+        // allData.map((t) => {
+        //   tagData.map((j) => {
+        //     j.tags.forEach((s) => {
+        //       collectTags(t, j.all, s);
+        //     });
+        //     j.set(j.all);
+        //     // console.log(j.all);
+        //     // if (j.name === "icon") {
+        //     //   setIcon(j.all);
+        //     // }
+        //   });
+        // });
       });
   }, []);
+
+  const collectTags = useCallback((t, allArray, s) => {
+    if (!allArray.includes(t)) {
+      if (t.name.includes(s) || t.description.includes(s)) {
+        allArray.push(t);
+      }
+    }
+  })
+
+  useEffect(() => {
+    allPlugins.map((t) => {
+      tagData.map((j) => {
+        j.tags.forEach((s) => {
+          collectTags(t, j.all, s);
+        });
+        j.set(j.all);
+        // console.log(j.all);
+        // if (j.name === "icon") {
+        //   setIcon(j.all);
+        // }
+      });
+    });
+  }, [allPlugins])
 
   const Header = () => {
     const likeSortHandle = () => {
