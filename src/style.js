@@ -128,9 +128,10 @@ export const AppStyle = styled.div`
       .card-info {
         display: flex;
         flex-direction: column;
+        margin-top: 4px;
 
         i {
-          font-weight: 600;
+          /* font-weight: 500; */
         }
       }
 
@@ -138,7 +139,7 @@ export const AppStyle = styled.div`
         opacity: 0.7;
         font-size: 0.8rem;
 
-        &:nth-of-type(2) {
+        &:not(&:nth-of-type(1)) {
           margin-top: 6px;
           font-size: 0.6rem;
         }
