@@ -281,7 +281,12 @@ const App = () => {
     return (
       <HeaderStyle>
         {/* <Switch /> */}
-        <img src={logo} alt="logo" className="logo" />
+        <img
+          src={logo}
+          alt="logo"
+          className="logo"
+          onClick={() => window.open("https://figma.cool")}
+        />
         <ul>
           {/* <li onClick={downSortHandle}>安装量</li> */}
           {/* <li onClick={likeSortHandle}>点赞数</li> */}

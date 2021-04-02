@@ -16,6 +16,7 @@ export const HeaderStyle = styled.nav`
   .logo {
     width: 111px;
     height: 24px;
+    cursor: pointer;
   }
 
   ul {
