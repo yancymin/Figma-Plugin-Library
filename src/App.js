@@ -366,13 +366,13 @@ const App = () => {
             </p>
           </div>
           <div className="card-info">
+            <span>
+              <i>{`Likes: ${i.likeCount.toLocaleString()}`}</i>
+            </span>
+            <span>
+              <i>{`Installs: ${i.installCount.toLocaleString()}`}</i>
+            </span>
             <span>{i.publisherName}</span>
-            <span>
-              Likes: <i>{i.likeCount.toLocaleString()}</i>
-            </span>
-            <span>
-              Installs: <i>{i.installCount.toLocaleString()}</i>
-            </span>
           </div>
         </section>
       </a>
