@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { AppStyle, GlobalStyles } from "../src/style.js";
-import Header from "../src/components/Header";
+// import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
 import { HeaderStyle } from "../src/components/HeaderStyle";
 
@@ -280,10 +280,11 @@ const App = () => {
 
     return (
       <HeaderStyle>
-        {/* <img src={logo} alt="logo" /> */}
+        {/* <Switch /> */}
+        <img src={logo} alt="logo" className="logo" />
         <ul>
-          <li onClick={downSortHandle}>安装量</li>
-          <li onClick={likeSortHandle}>点赞数</li>
+          {/* <li onClick={downSortHandle}>安装量</li> */}
+          {/* <li onClick={likeSortHandle}>点赞数</li> */}
           <li onClick={thumbnailToggle}>封面</li>
           {tagData.map((t) => {
             return (
@@ -291,7 +292,8 @@ const App = () => {
                 onClick={(e) => tagSortHandle(t.plugins, e.target.innerText)}
                 className={tagActive.includes(t.name) ? "tagActive" : null}
               >
-                {`${t.name} ${t.plugins.length}`}
+                {t.name}
+                <i>{t.plugins.length}</i>
               </li>
             );
           })}
@@ -352,7 +354,7 @@ const App = () => {
                   .replace(/(<\/a>)/gi, "")
                   .replace(/(<span>)/gi, "")
                   .replace(/(<\/span>)/gi, "")
-                  .replace(/(<\/li>)/gi, "" ),
+                  .replace(/(<\/li>)/gi, ""),
                 100
               )}
               ...

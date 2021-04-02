@@ -14,8 +14,8 @@ export const GlobalStyles = createGlobalStyle`
   #google_translate_element {
     z-index: 100;
     position: fixed;
-    right: 20px;
-    top: 10px;
+    right: 0;
+    top: 2rem;
 
     select {
       /* background: #333; */
@@ -49,22 +49,30 @@ export const GlobalStyles = createGlobalStyle`
 
 export const AppStyle = styled.div`
   .tagActive {
-    background: #333;
-    color: white;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 700;
+
+    i {
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
 
     &:hover {
-      color: white;
+      i {
+        background: rgba(0, 0, 0, 0.9);
+      }
     }
   }
   .thumbnailView {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: 8px;
 
     a {
       padding: 0;
     }
 
     section {
-      padding: 5%;
+      padding: 8%;
       display: flex;
       flex-direction: column;
     }
@@ -72,7 +80,7 @@ export const AppStyle = styled.div`
     .name {
       display: flex;
       align-items: center;
-      margin: 0 0 8px 0;
+      margin: 0 0 12px 0;
       h3 {
         margin: 0 0 0 12px;
       }
@@ -84,8 +92,8 @@ export const AppStyle = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     gap: 2px;
-    padding: 80px;
-    margin-top: 28px;
+    padding: 0rem 2rem 2rem 2rem;
+    margin-top: 170px;
 
     a {
       display: flex;
