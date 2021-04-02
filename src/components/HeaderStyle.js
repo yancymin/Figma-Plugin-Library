@@ -2,21 +2,25 @@ import styled from "styled-components";
 
 export const HeaderStyle = styled.nav`
   z-index: 99;
-  /* position: fixed; */
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
-  padding: 24px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  /* background: rgba(0, 0, 0, 0.8); */
+  padding: 40px 2rem;
+  background: rgba(255, 255, 255, 1);
   /* backdrop-filter: saturate(180%) blur(20px); */
+
+  .logo {
+    width: 111px;
+    height: 24px;
+  }
 
   ul {
     display: flex;
-    margin: 16px 0;
+    margin: 16px 0 0 0;
     max-width: 60vw;
     flex-wrap: wrap;
     justify-content: center;
@@ -24,17 +28,27 @@ export const HeaderStyle = styled.nav`
 
     li {
       cursor: pointer;
-      margin: 4px;
-      font-size: 14px;
+      margin-right: 16px;
+      margin-top: 12px;
+      font-size: 13px;
       color: rgb(51 51 51 / 80%);
-      border: 1px solid rgb(51 51 51 / 20%);
-      padding: 6px 10px;
-      border-radius: 40px;
       transition: all 0.2s ease;
 
       &:hover {
-        border: 1px solid rgb(51 51 51 / 60%);
-        color: rgb(51 51 51 / 100%);
+        color: rgb(0 0 0 / 90%);
+
+        i {
+          background: rgb(0 0 0 / 12%);
+        }
+      }
+
+      i {
+        padding: 2px 4px;
+        font-size: 12px;
+        line-height: 12px;
+        border-radius: 20px;
+        margin-left: 2px;
+        background: hsl(0deg 0% 97%);
       }
     }
   }
