@@ -64,7 +64,7 @@ export const AppStyle = styled.div`
     }
   }
   .thumbnailView {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)) !important;
     gap: 8px;
 
     a {
@@ -121,7 +121,7 @@ export const AppStyle = styled.div`
       p {
         font-size: 0.8rem;
         line-height: 1.45;
-        margin: 0 0 0.8rem 0;
+        margin: 0 0 0.86rem 0;
         color: rgba(0, 0, 0, 0.7);
       }
 
@@ -130,18 +130,17 @@ export const AppStyle = styled.div`
         flex-direction: column;
         margin-top: 4px;
 
-        i {
-          /* font-weight: 500; */
+        div {
+          margin-top: 4px;
+
+          span:first-child {
+            margin-right: 8px;
+          }
         }
-      }
 
-      span {
-        opacity: 0.7;
-        font-size: 0.8rem;
-
-        &:not(&:nth-of-type(1)) {
-          margin-top: 6px;
-          font-size: 0.6rem;
+        span {
+          opacity: 0.7;
+          font-size: 0.8rem;
         }
       }
 

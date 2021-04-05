@@ -3,6 +3,7 @@ import { AppStyle, GlobalStyles } from "../src/style.js";
 // import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
 import { HeaderStyle } from "../src/components/HeaderStyle";
+import zh from "../src/data/zh";
 
 const url = "https://yuanqing.github.io/figma-plugins-stats/";
 
@@ -56,7 +57,7 @@ const App = () => {
   const [svg, setSvg] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
-  const [thumbnail, setThumbnail] = useState(false);
+  const [thumbnail, setThumbnail] = useState(true);
 
   let tagData = [
     {
@@ -234,6 +235,13 @@ const App = () => {
       .then((data) => {
         allData = [...data.plugins];
         allData.sort(compare(sort));
+        allData.forEach((i) => {
+          zh.forEach((t) => {
+            if (i.name === t.name) {
+              i.description = t.zh;
+            }
+          });
+        });
         setPlugins(allData);
         setAllPlugins(allData);
       });
@@ -362,17 +370,18 @@ const App = () => {
                   .replace(/(<\/li>)/gi, ""),
                 100
               )}
-              ...
             </p>
           </div>
           <div className="card-info">
-            <span>
-              <i>{`Likes: ${i.likeCount.toLocaleString()}`}</i>
-            </span>
-            <span>
-              <i>{`Installs: ${i.installCount.toLocaleString()}`}</i>
-            </span>
             <span>{i.publisherName}</span>
+            <div>
+              <span>
+                <i>{`喜欢: ${i.likeCount.toLocaleString()}`}</i>
+              </span>
+              <span>
+                <i>{`安装: ${i.installCount.toLocaleString()}`}</i>
+              </span>
+            </div>
           </div>
         </section>
       </a>
