@@ -43,6 +43,74 @@ const zh = [
     name: "Remove BG",
     zh: "自动移除图像的背景,抠图神器",
   },
+  {
+    name: "Feather Icons",
+    zh: "Feather 图标库",
+  },
+  {
+    name: "Mapsicle",
+    zh: "创建编辑自定义地图",
+  },
+  {
+    name: "Image Palette",
+    zh: "从图像中生成包含 5 种颜色的色板",
+  },
+  {
+    name: "Wireframe",
+    zh: "创建用户流程原型和基本结构，350+ 矢量素材",
+  },
+  {
+    name: "Icons8 Free Icons",
+    zh: "Icons8 图标库",
+  },
+  {
+    name: "Avatars",
+    zh: "一键添加随机用户头像",
+  },
+  {
+    name: "Get Waves",
+    zh: "SVG 波浪形状生成器",
+  },
+  {
+    name: "Blush",
+    zh: "使用 Blush 创建自定义插画",
+  },
+  {
+    name: "Better Font Picker",
+    zh: "字体选择器",
+  },
+  {
+    name: "arc",
+    zh: "文本路径跟随，支持向上、下、圈圈",
+  },
+  {
+    name: "Chart",
+    zh: "使用真实或随即数据创建图表",
+  },
+  {
+    name: "Stark",
+    zh: "无障碍工具套件，支持颜色对比、颜色生成、Focus 顺序等",
+  },
+  {
+    name: "Figma <-> HTML - Design to code!",
+    zh: "将设计稿转换为 HTML、CSS、React、Vue",
+  },
+  {
+    name: "Isometric",
+    zh: "创建轴测图",
+  },
+  {
+    name: "Map Maker",
+    zh: "快速制作自定义地图，支持 Google Maps & Mapbox",
+  },
+  {
+    name: "Font Awesome Icons",
+    zh: "Font Awesome 图标库",
+  },
+  {
+    name: "Humaaans for Figma",
+    zh: "Humaaans 插画库",
+  },
 ];
 
 export default zh;
