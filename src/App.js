@@ -283,6 +283,7 @@ const App = () => {
     const tagSortHandle = (tag, name) => {
       setPlugins(tag);
       setTagActive(name);
+      window.scrollTo(0, 0);
       console.log(name);
     };
 

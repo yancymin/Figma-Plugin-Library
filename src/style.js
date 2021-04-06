@@ -4,6 +4,12 @@ import reset from "react-style-reset/string";
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
+  #Smallchat {
+    iframe {
+      transform: scale(0.9) !important;
+      transform-origin: right bottom;
+    }
+  }
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -64,7 +70,7 @@ export const AppStyle = styled.div`
     }
   }
   .thumbnailView {
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
     gap: 8px;
 
     a {
@@ -92,8 +98,10 @@ export const AppStyle = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     gap: 2px;
-    padding: 0rem 2rem 2rem 2rem;
-    margin-top: 170px;
+    padding: 0 20px;
+    margin-top: 32px;
+    width: calc(100vw - 175px - 40px);
+    margin-left: 175px;
 
     a {
       display: flex;
