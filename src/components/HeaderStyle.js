@@ -5,11 +5,10 @@ export const HeaderStyle = styled.nav`
   position: fixed;
   left: 0;
   top: 0;
-  width: 100vw;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 2rem;
+  padding: 32px 0px 32px 32px;
   background: rgba(255, 255, 255, 1);
   /* backdrop-filter: saturate(180%) blur(20px); */
 
@@ -25,12 +24,14 @@ export const HeaderStyle = styled.nav`
     max-width: 60vw;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
     /* border-top: 1px solid #eee; */
 
     li {
       cursor: pointer;
-      margin-right: 16px;
-      margin-top: 12px;
+      /* position: absolute; */
+      width: 100%;
+      margin-top: 16px;
       font-size: 13px;
       color: rgb(51 51 51 / 80%);
       transition: all 0.2s ease;
@@ -44,7 +45,7 @@ export const HeaderStyle = styled.nav`
       }
 
       i {
-        padding: 2px 4px;
+        padding: 1px 4px;
         font-size: 12px;
         line-height: 12px;
         border-radius: 20px;
