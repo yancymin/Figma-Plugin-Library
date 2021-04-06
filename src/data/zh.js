@@ -111,6 +111,46 @@ const zh = [
     name: "Humaaans for Figma",
     zh: "Humaaans 插画库",
   },
+  {
+    name: "Anima - Export HTML, CSS and React",
+    zh: "制作高保真原型，输出易于开发的 HTML，CSS 和 React",
+  },
+  {
+    name: "Palette",
+    zh: "机器学习帮助你创建完美的色板",
+  },
+  {
+    name: "Zeplin",
+    zh: "将 Frame 和组件导出到 Zeplin",
+  },
+  {
+    name: "LottieFiles",
+    zh: "Lottie 动画工具，1000+ 动画资源、插入动画帧、原型中观看动画",
+  },
+  {
+    name: "Image tracer",
+    zh: "将黑白位图转化为矢量图",
+  },
+  {
+    name: "uiGradients",
+    zh: "350+ 渐变颜色",
+  },
+  {
+    name: "A11y - Color Contrast Checker",
+    zh: "WCAG 文本可访问性对比度检查",
+  },
+  {
+    name: "Google Sheets Sync",
+    zh: "同步谷歌表格中的数据到设计稿中",
+  },
+  {
+    name: "Artboard Studio Mockups",
+    zh: "创建各类样机&包装模型",
+  },
+  {
+    name: "Arrow Auto",
+    zh: "流程图箭头绘制，自动追踪元素位置变化",
+  },
 ];
 
 export default zh;
