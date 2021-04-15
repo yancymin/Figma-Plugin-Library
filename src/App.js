@@ -3,6 +3,30 @@ import { AppStyle, GlobalStyles, HeaderStyle } from "../src/style.js";
 // import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
 import zh from "../src/data/zh";
+import iconLike from "../src/assets/nav-icon/like.svg";
+import iconInstall from "../src/assets/nav-icon/install.svg";
+import iconAll from "../src/assets/nav-icon/all.svg";
+import iconIcon from "../src/assets/nav-icon/icon.svg";
+import iconIllus from "../src/assets/nav-icon/illustration.svg";
+import iconMobile from "../src/assets/nav-icon/mobile.svg";
+import iconColor from "../src/assets/nav-icon/color.svg";
+import iconText from "../src/assets/nav-icon/text.svg";
+import iconMockup from "../src/assets/nav-icon/mockup.svg";
+import iconChart from "../src/assets/nav-icon/chart.svg";
+import iconCn from "../src/assets/nav-icon/chinese.svg";
+import iconComponent from "../src/assets/nav-icon/component.svg";
+import iconImage from "../src/assets/nav-icon/image.svg";
+import iconCode from "../src/assets/nav-icon/code.svg";
+import iconLayout from "../src/assets/nav-icon/layout.svg";
+import icon3d from "../src/assets/nav-icon/3d.svg";
+import iconDs from "../src/assets/nav-icon/dsystem.svg";
+import iconAnimation from "../src/assets/nav-icon/animation.svg";
+import iconFcool from "../src/assets/nav-icon/fcool.svg";
+import iconPrototype from "../src/assets/nav-icon/prototype.svg";
+import iconHandoff from "../src/assets/nav-icon/handoff.svg";
+import iconSvg from "../src/assets/nav-icon/svg.svg";
+import iconGame from "../src/assets/nav-icon/game.svg";
+import iconPick from "../src/assets/nav-icon/pick.svg";
 
 const url = "https://yuanqing.github.io/figma-plugins-stats/";
 
@@ -54,6 +78,8 @@ const App = () => {
   const [prototype, setPrototype] = useState([]);
   const [handoff, setHandoff] = useState([]);
   const [svg, setSvg] = useState([]);
+  const [game, setGame] = useState([]);
+  const [picked, setPicked] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(true);
@@ -65,6 +91,27 @@ const App = () => {
       tags: [],
       all: [],
       set: () => {},
+      icon: iconAll,
+    },
+    {
+      name: "编辑精选",
+      plugins: picked,
+      tags: [
+        "Unsplash",
+        "Autoflow",
+        "Content Reel",
+        "Remove BG",
+        "Better Font Picker",
+        "Chinese Font Picker",
+        "Similayer",
+        "Mockup",
+        "SkewDat",
+        "Iconify",
+        "Chinese User Data Generator",
+      ],
+      all: [],
+      set: setPicked,
+      icon: iconPick,
     },
     {
       name: "图标",
@@ -72,6 +119,7 @@ const App = () => {
       tags: ["icon"],
       all: [],
       set: setIcon,
+      icon: iconIcon,
     },
     {
       name: "插画",
@@ -79,6 +127,7 @@ const App = () => {
       tags: ["llustration"],
       all: [],
       set: setIllustration,
+      icon: iconIllus,
     },
     {
       name: "移动端",
@@ -86,6 +135,7 @@ const App = () => {
       tags: ["mobile", "ios", "android", "phone"],
       all: [],
       set: setMobile,
+      icon: iconMobile,
     },
     {
       name: "颜色",
@@ -93,6 +143,7 @@ const App = () => {
       tags: ["color", "palette", "Gradient"],
       all: [],
       set: setColor,
+      icon: iconColor,
     },
     {
       name: "文字",
@@ -100,6 +151,7 @@ const App = () => {
       tags: ["text", "typography", "font", "title", "Title"],
       all: [],
       set: setText,
+      icon: iconText,
     },
     {
       name: "样机",
@@ -107,6 +159,7 @@ const App = () => {
       tags: ["mockup"],
       all: [],
       set: setMock,
+      icon: iconMockup,
     },
     {
       name: "图表",
@@ -114,6 +167,7 @@ const App = () => {
       tags: ["chart", "Visualization"],
       all: [],
       set: setChart,
+      icon: iconChart,
     },
     {
       name: "中文",
@@ -121,6 +175,7 @@ const App = () => {
       tags: ["Chinese", "China", "chinese", "china", "中", "是", "的"],
       all: [],
       set: setChinese,
+      icon: iconCn,
     },
     {
       name: "组件",
@@ -128,6 +183,7 @@ const App = () => {
       tags: ["component", "Component", "master", "datech"],
       all: [],
       set: setComponent,
+      icon: iconComponent,
     },
     {
       name: "图像",
@@ -135,6 +191,7 @@ const App = () => {
       tags: ["image", "Image", "pic", "Pixel"],
       all: [],
       set: setImage,
+      icon: iconImage,
     },
     {
       name: "代码",
@@ -152,6 +209,7 @@ const App = () => {
       ],
       all: [],
       set: setCode,
+      icon: iconCode,
     },
     {
       name: "布局",
@@ -159,6 +217,7 @@ const App = () => {
       tags: ["ayout", "grid"],
       all: [],
       set: setLayout,
+      icon: iconLayout,
     },
     {
       name: "3D",
@@ -166,6 +225,7 @@ const App = () => {
       tags: ["3d", "3D"],
       all: [],
       set: setThreeD,
+      icon: icon3d,
     },
     {
       name: "设计系统",
@@ -180,6 +240,7 @@ const App = () => {
       ],
       all: [],
       set: setDSystem,
+      icon: iconDs,
     },
     {
       name: "动画",
@@ -187,6 +248,7 @@ const App = () => {
       tags: ["animation", "Animation", "gif", "animate"],
       all: [],
       set: setAnimation,
+      icon: iconAnimation,
     },
     {
       name: "Figma.Cool",
@@ -194,6 +256,7 @@ const App = () => {
       tags: ["Figma.Cool"],
       all: [],
       set: setCool,
+      icon: iconFcool,
     },
     {
       name: "原型",
@@ -209,6 +272,7 @@ const App = () => {
       ],
       all: [],
       set: setPrototype,
+      icon: iconPrototype,
     },
     {
       name: "交付",
@@ -216,6 +280,7 @@ const App = () => {
       tags: ["hand-off", "handoff", "Hand-off", "Handoff"],
       all: [],
       set: setHandoff,
+      icon: iconHandoff,
     },
     {
       name: "SVG",
@@ -223,6 +288,15 @@ const App = () => {
       tags: ["svg", "SVG"],
       all: [],
       set: setSvg,
+      icon: iconSvg,
+    },
+    {
+      name: "游戏",
+      plugins: game,
+      tags: ["game", "Game"],
+      all: [],
+      set: setGame,
+      icon: iconGame,
     },
   ];
 
@@ -246,14 +320,18 @@ const App = () => {
       });
   }, []);
 
-  const collectTags = useCallback((t, allArray, s) => {
-    if (!allArray.includes(t)) {
-      if (
+  const collectTags = useCallback((t, tag, s) => {
+    if (!tag.all.includes(t)) {
+      if (tag.name === "编辑精选") {
+        if (t.name === s) {
+          tag.all.push(t);
+        }
+      } else if (
         t.name.includes(s) ||
         t.description.includes(s) ||
         t.publisherName.includes(s)
       ) {
-        allArray.push(t);
+        tag.all.push(t);
       }
     }
   });
@@ -262,19 +340,13 @@ const App = () => {
     allPlugins.map((t) => {
       tagData.map((j) => {
         j.tags.forEach((s) => {
-          collectTags(t, j.all, s);
+          collectTags(t, j, s);
         });
         j.set(j.all);
       });
     });
   }, [allPlugins]);
 
-  const likeSortHandle = () => {
-    setSort("likeCount");
-  };
-  const downSortHandle = () => {
-    setSort("installCount");
-  };
   const thumbnailToggle = () => {
     setThumbnail(!thumbnail);
   };
@@ -282,7 +354,6 @@ const App = () => {
     setPlugins(tag);
     setTagActive(name);
     window.scrollTo(0, 0);
-    console.log(name);
   };
 
   const searchHandle = (e) => {
@@ -307,15 +378,15 @@ const App = () => {
           onClick={() => window.open("https://figma.cool")}
         />
         <ul>
-          {/* <li onClick={downSortHandle}>安装量</li> */}
-          {/* <li onClick={likeSortHandle}>点赞数</li> */}
           <li onClick={thumbnailToggle}>封面</li>
           {tagData.map((t) => {
             return (
               <li
+                key={Math.random()}
                 onClick={(e) => tagSortHandle(t.plugins, e.target.innerText)}
                 className={tagActive.includes(t.name) ? "tagActive" : null}
               >
+                <img src={t.icon} alt={t.name} />
                 {t.name}
                 <i>{t.plugins.length}</i>
               </li>
@@ -390,10 +461,12 @@ const App = () => {
                   {/* <span>{i.publisherName}</span> */}
                   <div>
                     <span>
-                      <i>{`喜欢: ${i.likeCount.toLocaleString()}`}</i>
+                      <img src={iconLike} alt="like" />
+                      <i>{i.likeCount.toLocaleString()}</i>
                     </span>
                     <span>
-                      <i>{`安装: ${i.installCount.toLocaleString()}`}</i>
+                      <img src={iconInstall} alt="install" />
+                      <i>{i.installCount.toLocaleString()}</i>
                     </span>
                   </div>
                 </div>
