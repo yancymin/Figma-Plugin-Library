@@ -136,6 +136,7 @@ export const AppStyle = styled.div`
       overflow: hidden;
       background: hsl(0deg 0% 97%);
       border-radius: 12px;
+      transition: all 0.2s ease;
 
       section {
         height: 100%;
@@ -183,7 +184,15 @@ export const AppStyle = styled.div`
       }
 
       &:hover {
-        background: hsl(0deg 0% 94%);
+        background: white;
+        box-shadow: 0px 10px 11px rgba(78, 89, 105, 0.06),
+          0px 6px 4px rgba(78, 89, 105, 0.03),
+          0px 0px 0px 1px rgba(78, 89, 105, 0.06),
+          0px 2.89797px 2.12518px rgba(78, 89, 105, 0.0342537),
+          0px 1.87823px 1.37737px rgba(78, 89, 105, 0.03),
+          0px 1.18233px 0.867039px rgba(78, 89, 105, 0.0257463),
+          0px 0.67932px 0.498168px rgba(78, 89, 105, 0.0209047),
+          0px 0.298986px 0.219257px rgba(78, 89, 105, 0.01438);
       }
     }
 
