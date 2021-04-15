@@ -20,8 +20,8 @@ export const GlobalStyles = createGlobalStyle`
   #google_translate_element {
     z-index: 100;
     position: fixed;
-    right: 0;
-    top: 2rem;
+    right: -8px;
+    top: 8px;
 
     select {
       /* background: #333; */
@@ -71,7 +71,7 @@ export const AppStyle = styled.div`
   }
   .thumbnailView {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
-    gap: 8px;
+    gap: 12px;
 
     a {
       padding: 0;
@@ -92,25 +92,50 @@ export const AppStyle = styled.div`
       }
     }
   }
+
+  input {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 151px;
+    width: calc(100% - 150px - 40px);
+    height: 46px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(0 0 0 / 12%);
+    background: white;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 14px;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 14px;
+      letter-spacing: 0.005em;
+      color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
   main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    gap: 2px;
-    padding: 0 20px;
-    margin-top: 32px;
-    width: calc(100vw - 175px - 40px);
-    margin-left: 175px;
+    gap: 8px;
+    padding: 0 20px 20px 20px;
+    margin-top: 66px;
+    width: calc(100vw - 150px - 40px);
+    margin-left: 150px;
 
     a {
       display: flex;
       flex-direction: column;
-      padding: 15% 15%;
+      padding: 12% 12%;
       color: black;
       text-decoration: none;
       overflow: hidden;
       background: hsl(0deg 0% 97%);
+      border-radius: 12px;
 
       section {
         height: 100%;
@@ -131,6 +156,11 @@ export const AppStyle = styled.div`
         line-height: 1.45;
         margin: 0 0 0.86rem 0;
         color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
 
       .card-info {
@@ -165,6 +195,70 @@ export const AppStyle = styled.div`
 
     .cover {
       width: 100%;
+    }
+  }
+`;
+
+export const HeaderStyle = styled.nav`
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 1);
+  overflow: scroll;
+  border-right: 1px solid rgb(0 0 0 / 12%);
+  padding: 12px 0 0 0;
+
+  .logo {
+    width: 100px;
+    height: 20px;
+    cursor: pointer;
+    margin: 12px;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    /* border-top: 1px solid #eee; */
+
+    li {
+      cursor: pointer;
+      /* position: absolute; */
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: rgb(51 51 51 / 80%);
+      transition: all 0.2s ease;
+      text-align: left;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background: rgb(0 0 0 / 8%);
+
+        i {
+          background: none;
+        }
+      }
+
+      i {
+        position: absolute;
+        right: 12px;
+        padding: 3px 4px;
+        font-size: 11px;
+        line-height: 11px;
+        border-radius: 2px;
+      }
     }
   }
 `;

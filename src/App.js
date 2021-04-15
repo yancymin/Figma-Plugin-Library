@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { AppStyle, GlobalStyles } from "../src/style.js";
+import { AppStyle, GlobalStyles, HeaderStyle } from "../src/style.js";
 // import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
-import { HeaderStyle } from "../src/components/HeaderStyle";
 import zh from "../src/data/zh";
 
 const url = "https://yuanqing.github.io/figma-plugins-stats/";
@@ -270,26 +269,37 @@ const App = () => {
     });
   }, [allPlugins]);
 
-  const Header = () => {
-    const likeSortHandle = () => {
-      setSort("likeCount");
-    };
-    const downSortHandle = () => {
-      setSort("installCount");
-    };
-    const thumbnailToggle = () => {
-      setThumbnail(!thumbnail);
-    };
-    const tagSortHandle = (tag, name) => {
-      setPlugins(tag);
-      setTagActive(name);
-      window.scrollTo(0, 0);
-      console.log(name);
-    };
+  const likeSortHandle = () => {
+    setSort("likeCount");
+  };
+  const downSortHandle = () => {
+    setSort("installCount");
+  };
+  const thumbnailToggle = () => {
+    setThumbnail(!thumbnail);
+  };
+  const tagSortHandle = (tag, name) => {
+    setPlugins(tag);
+    setTagActive(name);
+    window.scrollTo(0, 0);
+    console.log(name);
+  };
 
-    return (
+  const searchHandle = (e) => {
+    setPlugins(
+      allPlugins.filter((t) => {
+        let text =
+          t.name.toLocaleLowerCase() + t.description.toLocaleLowerCase();
+        return text.includes(e.target.value);
+      })
+    );
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <AppStyle className={"App"}>
+      <GlobalStyles />
       <HeaderStyle>
-        {/* <Switch /> */}
         <img
           src={logo}
           alt="logo"
@@ -313,92 +323,85 @@ const App = () => {
           })}
         </ul>
       </HeaderStyle>
-    );
-  };
-
-  const pluginList = plugins.map((i) => {
-    return (
-      <a
-        key={Math.random()}
-        href={`https://www.figma.com/community/plugin/${i.id}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {thumbnail ? (
-          <img
-            src={`https://www.figma.com/community/plugin/${i.id}/thumbnail`}
-            alt="thumbnail"
-            loading="lazy"
-            className="cover"
-          />
-        ) : null}
-        <section>
-          <div className="card-top">
-            <div className="name">
-              <img
-                src={`https://www.figma.com/community/plugin/${i.id}/icon`}
-                alt="icon"
-                className="icon"
-              />
-              <h3>{i.name} </h3>
-            </div>
-            <p>
-              {subString(
-                i.description
-                  .replace(/(<p>)/gi, "")
-                  .replace(/(<\/p>)/gi, "")
-                  .replace(/(<strong>)/gi, "")
-                  .replace(/(<\/strong>)/gi, "")
-                  .replace(/(<br>)/gi, "")
-                  .replace(/(<\/br>)/gi, "")
-                  .replace(/(<h2>)/gi, "")
-                  .replace(/(<\/h2>)/gi, "")
-                  .replace(/(<h1>)/gi, "")
-                  .replace(/(<\/h1>)/gi, "")
-                  .replace(/(<h3>)/gi, "")
-                  .replace(/(<\/h3>)/gi, "")
-                  .replace(/(<h4>)/gi, "")
-                  .replace(/(<\/h4>)/gi, "")
-                  .replace(/(<h5>)/gi, "")
-                  .replace(/(<\/h5>)/gi, "")
-                  .replace(/(<h6>)/gi, "")
-                  .replace(/(<\/h6>)/gi, "")
-                  .replace(/(<li>)/gi, "")
-                  .replace(/(<a>)/gi, "")
-                  .replace(/(<\/a>)/gi, "")
-                  .replace(/(<span>)/gi, "")
-                  .replace(/(<\/span>)/gi, "")
-                  .replace(/(<\/li>)/gi, ""),
-                100
-              )}
-            </p>
-          </div>
-          <div className="card-info">
-            <span>{i.publisherName}</span>
-            <div>
-              <span>
-                <i>{`喜欢: ${i.likeCount.toLocaleString()}`}</i>
-              </span>
-              <span>
-                <i>{`安装: ${i.installCount.toLocaleString()}`}</i>
-              </span>
-            </div>
-          </div>
-        </section>
-      </a>
-    );
-  });
-
-  return (
-    <AppStyle className={"App"}>
-      <GlobalStyles />
-      <Header />
-      {/* <input
-        onChange={(e) => {
-          inputValueHandle(e);
-        }}
-      /> */}
-      <main className={thumbnail ? `thumbnailView` : null}>{pluginList}</main>
+      <input
+        placeholder="搜索插件..."
+        onChange={(e) => searchHandle(e)}
+        autoFocus
+      />
+      <main className={thumbnail ? `thumbnailView` : null}>
+        {plugins.map((i) => {
+          return (
+            <a
+              key={Math.random()}
+              href={`https://www.figma.com/community/plugin/${i.id}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {thumbnail ? (
+                <img
+                  src={`https://www.figma.com/community/plugin/${i.id}/thumbnail`}
+                  alt="thumbnail"
+                  loading="lazy"
+                  className="cover"
+                />
+              ) : null}
+              <section>
+                <div className="card-top">
+                  <div className="name">
+                    <img
+                      src={`https://www.figma.com/community/plugin/${i.id}/icon`}
+                      alt="icon"
+                      className="icon"
+                    />
+                    <h3>{i.name} </h3>
+                  </div>
+                  <p>
+                    {subString(
+                      i.description
+                        .replace(/(<p>)/gi, "")
+                        .replace(/(<\/p>)/gi, "")
+                        .replace(/(<strong>)/gi, "")
+                        .replace(/(<\/strong>)/gi, "")
+                        .replace(/(<br>)/gi, "")
+                        .replace(/(<\/br>)/gi, "")
+                        .replace(/(<h2>)/gi, "")
+                        .replace(/(<\/h2>)/gi, "")
+                        .replace(/(<h1>)/gi, "")
+                        .replace(/(<\/h1>)/gi, "")
+                        .replace(/(<h3>)/gi, "")
+                        .replace(/(<\/h3>)/gi, "")
+                        .replace(/(<h4>)/gi, "")
+                        .replace(/(<\/h4>)/gi, "")
+                        .replace(/(<h5>)/gi, "")
+                        .replace(/(<\/h5>)/gi, "")
+                        .replace(/(<h6>)/gi, "")
+                        .replace(/(<\/h6>)/gi, "")
+                        .replace(/(<li>)/gi, "")
+                        .replace(/(<a>)/gi, "")
+                        .replace(/(<\/a>)/gi, "")
+                        .replace(/(<span>)/gi, "")
+                        .replace(/(<\/span>)/gi, "")
+                        .replace(/(<\/li>)/gi, ""),
+                      100
+                    )}
+                  </p>
+                </div>
+                <div className="card-info">
+                  {/* <span>{i.publisherName}</span> */}
+                  <div>
+                    <span>
+                      <i>{`喜欢: ${i.likeCount.toLocaleString()}`}</i>
+                    </span>
+                    <span>
+                      <i>{`安装: ${i.installCount.toLocaleString()}`}</i>
+                    </span>
+                  </div>
+                </div>
+              </section>
+            </a>
+          );
+        })}
+      </main>
     </AppStyle>
   );
 };
