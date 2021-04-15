@@ -97,8 +97,8 @@ export const AppStyle = styled.div`
     z-index: 99;
     position: fixed;
     top: 0;
-    left: 151px;
-    width: calc(100% - 150px - 40px);
+    left: 181px;
+    width: calc(100% - 180px - 40px);
     height: 46px;
     outline: none;
     border: none;
@@ -124,8 +124,8 @@ export const AppStyle = styled.div`
     gap: 8px;
     padding: 0 20px 20px 20px;
     margin-top: 66px;
-    width: calc(100vw - 150px - 40px);
-    margin-left: 150px;
+    width: calc(100vw - 180px - 40px);
+    margin-left: 180px;
 
     a {
       display: flex;
@@ -170,16 +170,22 @@ export const AppStyle = styled.div`
         margin-top: 4px;
 
         div {
-          margin-top: 4px;
+          /* margin-top: 4px; */
 
           span:first-child {
-            margin-right: 8px;
+            margin-right: 12px;
           }
         }
 
         span {
           opacity: 0.7;
           font-size: 0.8rem;
+          display: inline-flex;
+          align-items: center;
+
+          img {
+            margin-right: 2px;
+          }
         }
       }
 
@@ -214,7 +220,7 @@ export const HeaderStyle = styled.nav`
   left: 0;
   top: 0;
   height: 100vh;
-  width: 150px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 1);
@@ -251,6 +257,10 @@ export const HeaderStyle = styled.nav`
       text-align: left;
       display: flex;
       align-items: center;
+
+      img {
+        margin-right: 12px;
+      }
 
       &:hover {
         background: rgb(0 0 0 / 8%);
