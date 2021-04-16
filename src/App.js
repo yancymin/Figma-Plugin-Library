@@ -109,6 +109,8 @@ const App = () => {
         "SkewDat",
         "Iconify",
         "Chinese User Data Generator",
+        "Easometric",
+        "Filter",
       ],
       all: [],
       set: setPicked,
@@ -315,12 +317,6 @@ const App = () => {
     });
     setPlugins(allData);
     setAllPlugins(allData);
-
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-
-    //   });
   }, []);
 
   const collectTags = useCallback((t, tag, s) => {
