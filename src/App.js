@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { AppStyle, GlobalStyles, HeaderStyle } from "../src/style.js";
+import {
+  AppStyle,
+  GlobalStyles,
+  SidebarStyle,
+  HeaderStyle,
+} from "../src/style.js";
 import pluginJson from "./data/figma-plugin";
 // import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
@@ -28,8 +33,9 @@ import iconHandoff from "../src/assets/nav-icon/handoff.svg";
 import iconSvg from "../src/assets/nav-icon/svg.svg";
 import iconGame from "../src/assets/nav-icon/game.svg";
 import iconPick from "../src/assets/nav-icon/pick.svg";
+import iconSearch from "../src/assets/search.svg";
 
-const url = "https://yuanqing.github.io/figma-plugins-stats/";
+// const url = "https://yuanqing.github.io/figma-plugins-stats/";
 
 function subString(str, n) {
   var r = "";
@@ -83,7 +89,7 @@ const App = () => {
   const [picked, setPicked] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
-  const [thumbnail, setThumbnail] = useState(true);
+  const [thumbnail, setThumbnail] = useState(false);
 
   let tagData = [
     {
@@ -370,12 +376,25 @@ const App = () => {
     <AppStyle className={"App"}>
       <GlobalStyles />
       <HeaderStyle>
-        <img
-          src={logo}
-          alt="logo"
-          className="logo"
-          onClick={() => window.open("https://figma.cool")}
-        />
+        <div className="logo-field">
+          <img
+            src={logo}
+            alt="logo"
+            className="logo"
+            onClick={() => window.open("https://figma.cool")}
+          />
+          插件列表
+        </div>
+      </HeaderStyle>
+      <SidebarStyle>
+        <div className="input-wrap">
+          <img src={iconSearch} alt="iconSearch" />
+          <input
+            placeholder="搜索插件..."
+            onChange={(e) => searchHandle(e)}
+            autoFocus
+          />
+        </div>
         <ul>
           <li onClick={thumbnailToggle}>封面</li>
           {tagData.map((t) => {
@@ -392,12 +411,7 @@ const App = () => {
             );
           })}
         </ul>
-      </HeaderStyle>
-      <input
-        placeholder="搜索插件..."
-        onChange={(e) => searchHandle(e)}
-        autoFocus
-      />
+      </SidebarStyle>
       <main className={thumbnail ? `thumbnailView` : null}>
         {plugins.map((i) => {
           return (
