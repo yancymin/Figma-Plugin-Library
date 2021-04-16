@@ -93,29 +93,6 @@ export const AppStyle = styled.div`
     }
   }
 
-  input {
-    z-index: 99;
-    position: fixed;
-    top: 0;
-    left: 181px;
-    width: calc(100% - 180px - 40px);
-    height: 46px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgb(0 0 0 / 12%);
-    background: white;
-    padding: 0 20px;
-    font-size: 14px;
-    line-height: 14px;
-
-    &::placeholder {
-      font-size: 14px;
-      line-height: 14px;
-      letter-spacing: 0.005em;
-      color: rgba(0, 0, 0, 0.3);
-    }
-  }
-
   main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -214,11 +191,10 @@ export const AppStyle = styled.div`
   }
 `;
 
-export const HeaderStyle = styled.nav`
-  z-index: 99;
+export const SidebarStyle = styled.nav`
   position: fixed;
   left: 0;
-  top: 0;
+  top: 48px;
   height: 100vh;
   width: 180px;
   display: flex;
@@ -228,14 +204,47 @@ export const HeaderStyle = styled.nav`
   border-right: 1px solid rgb(0 0 0 / 12%);
   padding: 12px 0 0 0;
 
-  .logo {
-    width: 100px;
-    height: 20px;
-    cursor: pointer;
-    margin: 12px;
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 24px);
+    height: 30px;
+    margin: 8px 12px;
+    border-radius: 80px;
+    overflow: hidden;
+    background: #f7f7f7;
+    transition: all 0.2s ease;
 
     &:hover {
-      opacity: 0.85;
+      background: hsl(0deg 0% 92%);
+
+      input {
+        background: hsl(0deg 0% 92%);
+      }
+    }
+
+    img {
+      margin-right: 4px;
+      margin-left: 6px;
+      width: 18px;
+      height: 18px;
+    }
+    input {
+      width: calc(100% - 24px);
+      height: 32px;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      line-height: 14px;
+      background: #f7f7f7;
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: 0.005em;
+        color: rgba(0, 0, 0, 0.3);
+      }
     }
   }
 
@@ -278,6 +287,40 @@ export const HeaderStyle = styled.nav`
         line-height: 11px;
         border-radius: 2px;
       }
+    }
+  }
+`;
+
+export const HeaderStyle = styled.div`
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 24px);
+  height: 48px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgb(0 0 0 / 12%);
+  background: rgba(255, 255, 255, 1);
+
+  .logo-field {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .logo {
+    width: 100px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: -2px;
+
+    &:hover {
+      opacity: 0.85;
     }
   }
 `;
