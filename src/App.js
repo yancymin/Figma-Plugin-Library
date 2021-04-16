@@ -89,7 +89,7 @@ const App = () => {
   const [picked, setPicked] = useState([]);
   const [inputValue, setInputValue] = useState();
   const [sort, setSort] = useState("installCount");
-  const [thumbnail, setThumbnail] = useState(false);
+  const [thumbnail, setThumbnail] = useState(true);
 
   let tagData = [
     {
