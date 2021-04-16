@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { AppStyle, GlobalStyles, HeaderStyle } from "../src/style.js";
+import pluginJson from "./data/figma-plugin";
 // import Switch from "../src/components/Switch";
 import logo from "../src/assets/logo.svg";
 import zh from "../src/data/zh";
@@ -303,21 +304,23 @@ const App = () => {
   useEffect(() => {
     let allData = [];
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        allData = [...data.plugins];
-        allData.sort(compare(sort));
-        allData.forEach((i) => {
-          zh.forEach((t) => {
-            if (i.name === t.name) {
-              i.description = t.zh;
-            }
-          });
-        });
-        setPlugins(allData);
-        setAllPlugins(allData);
+    allData = [...pluginJson.plugins];
+    allData.sort(compare(sort));
+    allData.forEach((i) => {
+      zh.forEach((t) => {
+        if (i.name === t.name) {
+          i.description = t.zh;
+        }
       });
+    });
+    setPlugins(allData);
+    setAllPlugins(allData);
+
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+
+    //   });
   }, []);
 
   const collectTags = useCallback((t, tag, s) => {
