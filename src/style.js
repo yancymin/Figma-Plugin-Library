@@ -51,6 +51,33 @@ export const GlobalStyles = createGlobalStyle`
   box-shadow: none;
   background-color: unset;
 }
+
+.iconTop {
+  cursor: pointer;
+  z-index: 99;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  right: 20px;
+  bottom: 72px;
+  background: white;
+  box-shadow: 0px 10px 11px rgb(78 89 105 / 6%), 0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 6%), 0px 2.89797px 2.12518px rgb(78 89 105 / 3%), 0px 1.87823px 1.37737px rgb(78 89 105 / 3%), 0px 1.18233px 0.867039px rgb(78 89 105 / 3%), 0px 0.67932px 0.498168px rgb(78 89 105 / 2%), 0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
+  transition: all 0.2s ease-out;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
 `;
 
 export const AppStyle = styled.div`
