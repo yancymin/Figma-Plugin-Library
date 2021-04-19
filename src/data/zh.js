@@ -1,7 +1,7 @@
 const zh = [
   {
     name: "Unsplash",
-    zh: "最大的高质量免费可商用图库",
+    zh: "高质量免费可商用图库，可以快速填充各种类型的图片",
   },
   {
     name: "Iconify",
@@ -77,7 +77,7 @@ const zh = [
   },
   {
     name: "Better Font Picker",
-    zh: "字体选择器",
+    zh: "字体选择器，有字体的预览图，支持搜索",
   },
   {
     name: "arc",
@@ -150,6 +150,42 @@ const zh = [
   {
     name: "Arrow Auto",
     zh: "流程图箭头绘制，自动追踪元素位置变化",
+  },
+  {
+    name: "SkewDat",
+    zh: "给元素设置水平和垂直方向的倾斜",
+  },
+  {
+    name: "Clean Document",
+    zh: "自动整理清理设计文件，如删除隐藏、解组、重命名等等",
+  },
+  {
+    name: "Similayer",
+    zh: "快速选择属性相同的图层，有非常多的属性可以设置",
+  },
+  {
+    name: "Mockup",
+    zh: "将画框或组件置入一个形状中，借此可以将设计投射到带有透视的样机中",
+  },
+  {
+    name: "Easometric",
+    zh: "非常简单的创建轴侧图，可以选择透视方向",
+  },
+  {
+    name: "Chinese Font Picker",
+    zh: "选择和预览系统中已安装的中文字体",
+  },
+  {
+    name: "Filter",
+    zh: "强大的图像调整、风格化、滤镜处理工具",
+  },
+  {
+    name: "Sorter",
+    zh: "将图层按照命名、位置等进行排序",
+  },
+  {
+    name: "Chinese User Data Generator",
+    zh: "快速生成姓名、年龄、性别、地址、身份证等用户数据信息",
   },
 ];
 
