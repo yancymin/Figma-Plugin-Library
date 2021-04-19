@@ -102,7 +102,7 @@ const App = () => {
       icon: iconAll,
     },
     {
-      name: "编辑精选",
+      name: "装机必备",
       plugins: picked,
       tags: [
         "Unsplash",
@@ -329,7 +329,7 @@ const App = () => {
 
   const collectTags = useCallback((t, tag, s) => {
     if (!tag.all.includes(t)) {
-      if (tag.name === "编辑精选") {
+      if (tag.name === "装机必备") {
         if (t.name === s) {
           tag.all.push(t);
         }
