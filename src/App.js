@@ -34,6 +34,7 @@ import iconSvg from "../src/assets/nav-icon/svg.svg";
 import iconGame from "../src/assets/nav-icon/game.svg";
 import iconPick from "../src/assets/nav-icon/pick.svg";
 import iconSearch from "../src/assets/search.svg";
+import iconTop from "../src/assets/backtop.svg";
 
 // const url = "https://yuanqing.github.io/figma-plugins-stats/";
 
@@ -101,7 +102,7 @@ const App = () => {
       icon: iconAll,
     },
     {
-      name: "编辑精选",
+      name: "装机必备",
       plugins: picked,
       tags: [
         "Unsplash",
@@ -117,6 +118,8 @@ const App = () => {
         "Chinese User Data Generator",
         "Easometric",
         "Filter",
+        "Sorter",
+        "Clean Document",
       ],
       all: [],
       set: setPicked,
@@ -181,7 +184,7 @@ const App = () => {
     {
       name: "中文",
       plugins: chinese,
-      tags: ["Chinese", "China", "chinese", "china", "中", "是", "的"],
+      tags: ["Chinese", "China", "chinese", "china"],
       all: [],
       set: setChinese,
       icon: iconCn,
@@ -311,7 +314,6 @@ const App = () => {
 
   useEffect(() => {
     let allData = [];
-
     allData = [...pluginJson.plugins];
     allData.sort(compare(sort));
     allData.forEach((i) => {
@@ -327,7 +329,7 @@ const App = () => {
 
   const collectTags = useCallback((t, tag, s) => {
     if (!tag.all.includes(t)) {
-      if (tag.name === "编辑精选") {
+      if (tag.name === "装机必备") {
         if (t.name === s) {
           tag.all.push(t);
         }
@@ -340,6 +342,8 @@ const App = () => {
       }
     }
   });
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     allPlugins.map((t) => {
@@ -374,6 +378,17 @@ const App = () => {
 
   return (
     <AppStyle className={"App"}>
+      <div
+        className="iconTop"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+      >
+        <img src={iconTop} alt="iconTop" />
+      </div>
       <GlobalStyles />
       <HeaderStyle>
         <div className="logo-field">
