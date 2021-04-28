@@ -238,39 +238,38 @@ export const SidebarStyle = styled.nav`
     height: 30px;
     margin: 8px 12px;
     border-radius: 80px;
-    overflow: hidden;
-    background: #f7f7f7;
+    /* overflow: hidden; */
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
     transition: all 0.2s ease;
 
     &:hover {
-      background: hsl(0deg 0% 92%);
-
-      input {
-        background: hsl(0deg 0% 92%);
-      }
+      background: rgba(0, 0, 0, 0.08);
+      border-color: transparent;
     }
 
     img {
-      margin-right: 4px;
+      margin-right: 2px;
       margin-left: 6px;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
     input {
       width: calc(100% - 24px);
-      height: 32px;
+      height: 28px;
       outline: none;
       border: none;
-      font-size: 14px;
-      line-height: 14px;
-      background: #f7f7f7;
+      font-size: 13px;
+      line-height: 13px;
+      border-radius: 80px;
+      background: transparent;
       transition: all 0.2s ease;
 
       &::placeholder {
-        font-size: 14px;
-        line-height: 14px;
+        font-size: 13px;
+        line-height: 13px;
         letter-spacing: 0.005em;
-        color: rgba(0, 0, 0, 0.3);
+        color: rgba(0, 0, 0, 0.6);
       }
     }
   }
@@ -285,7 +284,7 @@ export const SidebarStyle = styled.nav`
     li {
       cursor: pointer;
       /* position: absolute; */
-      width: 100%;
+      width: calc(100% - 24px);
       padding: 8px 12px;
       font-size: 13px;
       color: rgb(51 51 51 / 80%);

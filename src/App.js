@@ -517,7 +517,7 @@ const App = () => {
         <div className="input-wrap">
           <img src={iconSearch} alt="iconSearch" />
           <input
-            placeholder="搜索插件..."
+            placeholder="搜索插件"
             onChange={(e) => searchHandle(e)}
             autoFocus
           />
