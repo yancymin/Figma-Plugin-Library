@@ -124,6 +124,10 @@ export const AppStyle = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
     gap: 12px;
 
+    &>div {
+      height: unset;
+    }
+
     a {
       padding: 0;
     }
@@ -154,6 +158,10 @@ export const AppStyle = styled.div`
     margin-top: 66px;
     /* width: calc((100vw - 180px) - 40px); */
     margin-left: 192px;
+
+    &>div {
+      height: fit-content;
+    }
 
     a {
       display: flex;
