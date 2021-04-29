@@ -15,6 +15,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     top: 0 !important;
     background: #fff;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   #google_translate_element {
@@ -82,12 +87,31 @@ export const GlobalStyles = createGlobalStyle`
 
 export const AppStyle = styled.div`
   .tagActive {
-    color: rgba(0, 0, 0, 0.9);
+    color: rgb(255 255 255 / 90%);
     font-weight: 700;
+    background: black;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 20%);
+
+    &:hover {
+      color: rgb(255 255 255 / 90%);
+      font-weight: 700;
+      background: black;
+      img {
+        filter: invert(1);
+      }
+      i {
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+      }
+    }
 
     i {
       background: rgba(0, 0, 0, 0.9);
       color: white;
+    }
+
+    img {
+      filter: invert(1);
     }
 
     &:hover {
@@ -128,13 +152,14 @@ export const AppStyle = styled.div`
     gap: 8px;
     padding: 0 20px 20px 20px;
     margin-top: 66px;
-    width: calc(100vw - 180px - 40px);
-    margin-left: 180px;
+    /* width: calc((100vw - 180px) - 40px); */
+    margin-left: 192px;
 
     a {
       display: flex;
       flex-direction: column;
       padding: 12% 12%;
+      height: 100%;
       color: black;
       text-decoration: none;
       overflow: hidden;
@@ -223,20 +248,76 @@ export const SidebarStyle = styled.nav`
   left: 0;
   top: 48px;
   height: 100vh;
-  width: 180px;
+  width: 168px;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 1);
   overflow: scroll;
-  border-right: 1px solid rgb(0 0 0 / 12%);
-  padding: 12px 0 0 0;
+  /* border-right: 1px solid rgb(0 0 0 / 12%); */
+  padding: 20px 12px 0 12px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .follow-fc {
+    position: absolute;
+    bottom: 80px;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: rgb(51 51 51 / 80%);
+    transition: all 0.2s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 12px;
+
+      &:nth-of-type(2) {
+        position: absolute;
+        right: -18px;
+        padding: 3px 4px;
+        font-size: 11px;
+        line-height: 11px;
+        border-radius: 2px;
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      background: white;
+      box-shadow: 0px 10px 11px rgb(78 89 105 / 6%),
+        0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 6%),
+        0px 2.89797px 2.12518px rgb(78 89 105 / 3%),
+        0px 1.87823px 1.37737px rgb(78 89 105 / 3%),
+        0px 1.18233px 0.867039px rgb(78 89 105 / 3%),
+        0px 0.67932px 0.498168px rgb(78 89 105 / 2%),
+        0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
+
+      i {
+        background: none;
+      }
+    }
+
+    i {
+      position: absolute;
+      right: 18px;
+      padding: 3px 4px;
+      font-size: 11px;
+      line-height: 11px;
+      border-radius: 2px;
+    }
+  }
 
   .input-wrap {
     display: flex;
     align-items: center;
-    width: calc(100% - 24px);
     height: 30px;
-    margin: 8px 12px;
+    margin: 4px 0 12px 0;
     border-radius: 80px;
     /* overflow: hidden; */
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -244,8 +325,15 @@ export const SidebarStyle = styled.nav`
     transition: all 0.2s ease;
 
     &:hover {
-      background: rgba(0, 0, 0, 0.08);
+      background: white;
       border-color: transparent;
+      box-shadow: 0px 10px 11px rgb(78 89 105 / 6%),
+        0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 6%),
+        0px 2.89797px 2.12518px rgb(78 89 105 / 3%),
+        0px 1.87823px 1.37737px rgb(78 89 105 / 3%),
+        0px 1.18233px 0.867039px rgb(78 89 105 / 3%),
+        0px 0.67932px 0.498168px rgb(78 89 105 / 2%),
+        0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
     }
 
     img {
@@ -276,16 +364,14 @@ export const SidebarStyle = styled.nav`
 
   ul {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
     /* border-top: 1px solid #eee; */
 
     li {
       cursor: pointer;
-      /* position: absolute; */
-      width: calc(100% - 24px);
-      padding: 8px 12px;
+      padding: 6px 8px;
+      border-radius: 4px;
       font-size: 13px;
       color: rgb(51 51 51 / 80%);
       transition: all 0.2s ease;
@@ -298,7 +384,14 @@ export const SidebarStyle = styled.nav`
       }
 
       &:hover {
-        background: rgb(0 0 0 / 8%);
+        background: white;
+        box-shadow: 0px 10px 11px rgb(78 89 105 / 6%),
+          0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 6%),
+          0px 2.89797px 2.12518px rgb(78 89 105 / 3%),
+          0px 1.87823px 1.37737px rgb(78 89 105 / 3%),
+          0px 1.18233px 0.867039px rgb(78 89 105 / 3%),
+          0px 0.67932px 0.498168px rgb(78 89 105 / 2%),
+          0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
 
         i {
           background: none;
@@ -307,7 +400,7 @@ export const SidebarStyle = styled.nav`
 
       i {
         position: absolute;
-        right: 12px;
+        right: 18px;
         padding: 3px 4px;
         font-size: 11px;
         line-height: 11px;
@@ -326,9 +419,10 @@ export const HeaderStyle = styled.div`
   align-items: center;
   width: calc(100vw - 24px);
   height: 48px;
-  padding: 0 12px;
+  padding: 0 16px;
   border-bottom: 1px solid rgb(0 0 0 / 12%);
-  background: rgba(255, 255, 255, 1);
+  background: rgb(255 255 255 / 88%);
+  backdrop-filter: saturate(180%) blur(20px);
 
   .logo-field {
     display: flex;

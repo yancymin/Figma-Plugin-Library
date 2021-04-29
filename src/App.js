@@ -35,9 +35,10 @@ import iconGame from "../src/assets/nav-icon/game.svg";
 import iconPick from "../src/assets/nav-icon/pick.svg";
 import iconSearch from "../src/assets/search.svg";
 import iconTop from "../src/assets/backtop.svg";
+import iconOpen from "../src/assets/nav-icon/open.svg";
 
-import { useIntersection } from 'react-use';
-import { chunk } from 'lodash';
+import { useIntersection } from "react-use";
+import { chunk } from "lodash";
 
 // const url = "https://yuanqing.github.io/figma-plugins-stats/";
 
@@ -71,18 +72,18 @@ const Card = (props) => {
   const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef, {
     root: null,
-    rootMargin: '0px',
-    threshold: 1
+    rootMargin: "0px",
+    threshold: 1,
   });
 
   useEffect(() => {
-    if(intersection && intersection.intersectionRatio > 0) {
+    if (intersection && intersection.intersectionRatio > 0) {
       // console.log(index, chunkNum, index / chunkNum, (0.8 * chunkNum / 100));
-      if((index / chunkNum) > (0.8 * chunkNum / 100)) {
+      if (index / chunkNum > (0.8 * chunkNum) / 100) {
         showNext();
       }
     }
-  }, [intersection])
+  }, [intersection]);
 
   return (
     <div ref={intersectionRef}>
@@ -422,7 +423,7 @@ const App = () => {
 
   const showNext = (page) => {
     setNowShowIndex(page + 1);
-  }
+  };
 
   useEffect(() => {
     let allData = [];
@@ -538,6 +539,11 @@ const App = () => {
             );
           })}
         </ul>
+        {/* <li className="follow-fc">
+          <img src={iconFcool} alt="iconFcool" />
+          关注 Figma.Cool
+          <img src={iconOpen} alt="iconOpen" />
+        </li> */}
       </SidebarStyle>
       <main className={thumbnail ? `thumbnailView` : null}>
         {plugins.map((list, i) => {
