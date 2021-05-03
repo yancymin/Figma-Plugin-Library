@@ -131,6 +131,7 @@ export const AppStyle = styled.div`
 
     a {
       padding: 0;
+      height: 100%;
     }
 
     section {
@@ -154,7 +155,7 @@ export const AppStyle = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    gap: 8px;
+    gap:12px;
     padding: 0 20px 20px 20px;
     margin-top: 66px;
     /* width: calc((100vw - 180px) - 40px); */
@@ -164,7 +165,7 @@ export const AppStyle = styled.div`
       display: flex;
       flex-direction: column;
       padding: 12% 12%;
-      height: 100%;
+      height: 168px;
       color: black;
       text-decoration: none;
       overflow: hidden;
