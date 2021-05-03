@@ -83,6 +83,11 @@ export const GlobalStyles = createGlobalStyle`
     transform: scale(1.2);
   }
 }
+
+.onfocus {
+    border-color: transparent  !important;
+    box-shadow: 0 0 0 2px #2196f3 !important;
+}
 `;
 
 export const AppStyle = styled.div`
@@ -171,9 +176,17 @@ export const AppStyle = styled.div`
       color: black;
       text-decoration: none;
       overflow: hidden;
-      background: hsl(0deg 0% 97%);
+      /* background: hsl(0deg 0% 97%); */
       border-radius: 12px;
       transition: all 0.2s ease;
+      background: white;
+      box-shadow: 0px 2px 2px rgb(78 89 105 / 8%),
+        0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 8%),
+        0px 2.89797px 2.12518px rgb(78 89 105 / 2%),
+        0px 1.87823px 1.37737px rgb(78 89 105 / 2%),
+        0px 1.18233px 0.867039px rgb(78 89 105 / 2%),
+        0px 0.67932px 0.498168px rgb(78 89 105 / 1%),
+        0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
 
       section {
         height: 100%;
@@ -227,15 +240,13 @@ export const AppStyle = styled.div`
       }
 
       &:hover {
-        background: white;
-        box-shadow: 0px 10px 11px rgba(78, 89, 105, 0.06),
-          0px 6px 4px rgba(78, 89, 105, 0.03),
-          0px 0px 0px 1px rgba(78, 89, 105, 0.06),
-          0px 2.89797px 2.12518px rgba(78, 89, 105, 0.0342537),
-          0px 1.87823px 1.37737px rgba(78, 89, 105, 0.03),
-          0px 1.18233px 0.867039px rgba(78, 89, 105, 0.0257463),
-          0px 0.67932px 0.498168px rgba(78, 89, 105, 0.0209047),
-          0px 0.298986px 0.219257px rgba(78, 89, 105, 0.01438);
+        box-shadow: 0px 10px 11px rgb(78 89 105 / 0%),
+          0px 6px 4px rgb(78 89 105 / 0%), 0px 0px 0px 2px #2196f3,
+          0px 2.89797px 2.12518px rgb(78 89 105 / 0%),
+          0px 1.87823px 1.37737px rgb(78 89 105 / 0%),
+          0px 1.18233px 0.867039px rgb(78 89 105 / 0%),
+          0px 0.67932px 0.498168px rgb(78 89 105 / 0%),
+          0px 0.298986px 0.219257px rgb(78 89 105 / 0%);
       }
     }
 
@@ -329,8 +340,21 @@ export const SidebarStyle = styled.nav`
     border-radius: 80px;
     /* overflow: hidden; */
     border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 2px transparent;
     background: #fff;
     transition: all 0.2s ease;
+
+    &::after {
+      content: "/";
+      padding: 2px 5px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      position: absolute;
+      right: 20px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #707070;
+      background: white;
+    }
 
     &:hover {
       background: white;
@@ -377,6 +401,8 @@ export const SidebarStyle = styled.nav`
     /* border-top: 1px solid #eee; */
 
     li {
+      height: 30px;
+      box-sizing: border-box;
       cursor: pointer;
       padding: 6px 8px;
       border-radius: 4px;
@@ -389,6 +415,8 @@ export const SidebarStyle = styled.nav`
 
       img {
         margin-right: 12px;
+        width: 18px;
+        height: 18px;
       }
 
       &:hover {

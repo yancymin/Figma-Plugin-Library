@@ -191,7 +191,7 @@ const App = () => {
   const [svg, setSvg] = useState([]);
   const [game, setGame] = useState([]);
   const [picked, setPicked] = useState([]);
-  const [inputValue, setInputValue] = useState();
+  const [inputOnFocus, setInputOnFocus] = useState(true);
   const [sort, setSort] = useState("installCount");
   const [thumbnail, setThumbnail] = useState(true);
   const [nowShowIndex, setNowShowIndex] = useState(1);
@@ -440,6 +440,24 @@ const App = () => {
     setAllPlugins(allData);
   }, []);
 
+  const searchInput = useRef();
+  useEffect(() => {
+    searchInput.current.addEventListener("focus", () => {
+      setInputOnFocus(true);
+    });
+    searchInput.current.addEventListener("blur", () => {
+      setInputOnFocus(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      const keyNum = window.event ? e.keyCode : e.which;
+      if (keyNum === 191) {
+        e.preventDefault();
+        searchInput.current.focus();
+      }
+    });
+  }, []);
+
   const collectTags = useCallback((t, tag, s) => {
     if (!tag.all.includes(t)) {
       if (tag.name === "装机必备") {
@@ -455,8 +473,6 @@ const App = () => {
       }
     }
   });
-
-  useEffect(() => {}, []);
 
   useEffect(() => {
     allPlugins.map((t) => {
@@ -511,16 +527,17 @@ const App = () => {
             className="logo"
             onClick={() => window.open("https://figma.cool")}
           />
-          插件列表
+          插件库
         </div>
       </HeaderStyle>
       <SidebarStyle>
-        <div className="input-wrap">
+        <div className={inputOnFocus ? `input-wrap onfocus` : "input-wrap"}>
           <img src={iconSearch} alt="iconSearch" />
           <input
             placeholder="搜索插件"
             onChange={(e) => searchHandle(e)}
             autoFocus
+            ref={searchInput}
           />
         </div>
         <ul>
