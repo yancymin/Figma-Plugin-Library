@@ -454,6 +454,7 @@ const App = () => {
       if (keyNum === 191) {
         e.preventDefault();
         searchInput.current.focus();
+        searchInput.current.select();
       }
     });
   }, []);
