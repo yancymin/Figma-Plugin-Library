@@ -564,6 +564,22 @@ const App = () => {
         </li> */}
       </SidebarStyle>
       <main className={thumbnail ? `thumbnailView` : null}>
+        <div className="header">
+          <h1>探索 Figma 插件</h1>
+          <div
+            className={
+              inputOnFocus ? `mian-input-wrap onfocus` : "main-input-wrap"
+            }
+          >
+            <img src={iconSearch} alt="iconSearch" />
+            <input
+              placeholder="搜索插件"
+              onChange={(e) => searchHandle(e)}
+              autoFocus
+              ref={searchInput}
+            />
+          </div>
+        </div>
         {plugins.map((list, i) => {
           if (list && list.length > 0 && nowShowIndex > i) {
             return list.map((item, index) => (

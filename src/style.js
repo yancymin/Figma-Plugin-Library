@@ -151,16 +151,93 @@ export const AppStyle = styled.div`
   }
 
   main {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    gap:12px;
-    padding: 0 20px 20px 20px;
+    gap: 12px;
+    padding: 200px 20px 20px 20px;
     margin-top: 66px;
-    /* width: calc((100vw - 180px) - 40px); */
     margin-left: 192px;
 
+    .header {
+      width: calc(100vw - 192px - 40px);
+      height: 200px;
+      top: 0px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h1 {
+        font-size: 40px;
+        font-weight: 600;
+      }
+
+      .main-input-wrap {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 4px 0 12px 0;
+        border-radius: 80px;
+        /* overflow: hidden; */
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        box-shadow: 0 0 0 2px transparent;
+        background: #fff;
+        transition: all 0.2s ease;
+
+        &::after {
+          content: "/";
+          padding: 2px 5px;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          position: absolute;
+          right: 20px;
+          border-radius: 3px;
+          font-size: 12px;
+          color: #707070;
+          background: white;
+        }
+
+        &:hover {
+          background: white;
+          border-color: transparent;
+          box-shadow: 0px 10px 11px rgb(78 89 105 / 6%),
+            0px 6px 4px rgb(78 89 105 / 3%), 0px 0px 0px 1px rgb(78 89 105 / 6%),
+            0px 2.89797px 2.12518px rgb(78 89 105 / 3%),
+            0px 1.87823px 1.37737px rgb(78 89 105 / 3%),
+            0px 1.18233px 0.867039px rgb(78 89 105 / 3%),
+            0px 0.67932px 0.498168px rgb(78 89 105 / 2%),
+            0px 0.298986px 0.219257px rgb(78 89 105 / 1%);
+        }
+
+        img {
+          margin-right: 2px;
+          margin-left: 6px;
+          width: 16px;
+          height: 16px;
+        }
+        input {
+          width: calc(100% - 24px);
+          height: 28px;
+          outline: none;
+          border: none;
+          font-size: 13px;
+          line-height: 13px;
+          border-radius: 80px;
+          background: transparent;
+          transition: all 0.2s ease;
+
+          &::placeholder {
+            font-size: 13px;
+            line-height: 13px;
+            letter-spacing: 0.005em;
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+      }
+    }
     a {
       display: flex;
       flex-direction: column;
