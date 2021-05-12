@@ -458,8 +458,8 @@ export const HeaderStyle = styled.div`
   height: 48px;
   padding: 0 16px;
   border-bottom: 1px solid rgb(0 0 0 / 12%);
-  background: rgb(255 255 255 / 88%);
-  backdrop-filter: saturate(180%) blur(20px);
+  background: rgb(255 255 255 / 80%);
+  backdrop-filter: blur(16px);
 
   .logo-field {
     display: flex;
