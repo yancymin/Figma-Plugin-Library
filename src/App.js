@@ -36,7 +36,6 @@ import iconPick from "../src/assets/nav-icon/pick.svg";
 import iconSearch from "../src/assets/search.svg";
 import iconTop from "../src/assets/backtop.svg";
 import iconOpen from "../src/assets/nav-icon/open.svg";
-
 import { useIntersection } from "react-use";
 import { chunk } from "lodash";
 
