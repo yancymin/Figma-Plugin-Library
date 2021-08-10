@@ -40,6 +40,7 @@ import { useIntersection } from "react-use";
 import { chunk } from "lodash";
 
 // const url = "https://yuanqing.github.io/figma-plugins-stats/";
+
 function subString(str, n) {
   var r = "";
   var m;
